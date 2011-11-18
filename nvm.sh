@@ -92,22 +92,14 @@ nvm()
 
       [ -d "$NVM_DIR/$VERSION" ] && echo "$VERSION is already installed." && return
 
-      tarball=''
-      if [ "`curl -Is "http://nodejs.org/dist/$VERSION/node-$VERSION.tar.gz" | grep '200 OK'`" != '' ]; then
-        tarball="http://nodejs.org/dist/$VERSION/node-$VERSION.tar.gz"
-      elif [ "`curl -Is "http://nodejs.org/dist/node-$VERSION.tar.gz" | grep '200 OK'`" != '' ]; then
-        tarball="http://nodejs.org/dist/node-$VERSION.tar.gz"
-      fi
       if (
-        [ ! -z $tarball ] && \
         mkdir -p "$NVM_DIR/src" && \
         cd "$NVM_DIR/src" && \
-        curl -C - --progress-bar $tarball -o "node-$VERSION.tar.gz" && \
-        tar -xzf "node-$VERSION.tar.gz" && \
-        cd "node-$VERSION" && \
+				git checkout master && \
+        git pull && \
+        git checkout $VERSION && \
         ./configure --prefix="$NVM_DIR/$VERSION" && \
         make && \
-        rm -f "$NVM_DIR/$VERSION" 2>/dev/null && \
         make install
         )
       then
@@ -143,11 +135,7 @@ nvm()
       fi
 
       # Delete all files related to target version.
-      (mkdir -p "$NVM_DIR/src" && \
-          cd "$NVM_DIR/src" && \
-          rm -rf "node-$VERSION" 2>/dev/null && \
-          rm -f "node-$VERSION.tar.gz" 2>/dev/null && \
-          rm -rf "$NVM_DIR/$VERSION" 2>/dev/null)
+      rm -rf "$NVM_DIR/$VERSION" 2>/dev/null
       echo "Uninstalled node $VERSION"
 
       # Rm any aliases that point to uninstalled version.
