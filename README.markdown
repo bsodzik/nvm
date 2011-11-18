@@ -4,11 +4,13 @@
 
 First you'll need to make sure your system has a c++ compiler.  For OSX, XCode will work, for Ubuntu, the build-essential and libssl-dev packages work.
 
-To install create a folder somewhere in your filesystem with the "`nvm.sh`" file inside it.  I put mine in a folder called "`.nvm`".
+To install create a folder somewhere in your filesystem with the "`nvm.sh`" file inside it.  I put mine in a folder called "`.nvm`" and clone Node.js repository into same folder into 'src' directory.
 
-Or if you have `git` installed, then just clone it:
+Or if you have `git` installed, then just clone it and initialize submodules:
 
     git clone git://github.com/medikoo/nvm.git ~/.nvm
+    git submodule init
+    git submodule update
 
 To activate nvm, you need to source it from your bash shell
 
