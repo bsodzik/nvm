@@ -1,16 +1,14 @@
 # Node Version Manager
 
+It's repository based version of [creationix's nvm](https://github.com/creationix/nvm). It means that it doesn't download tarballs but just switches tags on node.js repository and compiles needed versions.
+
 ## Installation
 
 First you'll need to make sure your system has a c++ compiler.  For OSX, XCode will work, for Ubuntu, the build-essential and libssl-dev packages work.
 
-To install create a folder somewhere in your filesystem with the "`nvm.sh`" file inside it.  I put mine in a folder called "`.nvm`" and clone Node.js repository into same folder into 'src' directory.
+To install clone it:
 
-Or if you have `git` installed, then just clone it and initialize submodules:
-
-    git clone git://github.com/medikoo/nvm.git ~/.nvm
-    git submodule init
-    git submodule update
+    git clone --recursive git://github.com/medikoo/nvm.git ~/.nvm
 
 To activate nvm, you need to source it from your bash shell
 
