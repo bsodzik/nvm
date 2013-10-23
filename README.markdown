@@ -8,7 +8,7 @@ First you'll need to make sure your system has a c++ compiler.  For OSX, XCode w
 
 To install clone it:
 
-    git clone --recursive git@github.com/bsodzik/nvm.git ~/.nvm
+    git clone --recursive git@github.com:bsodzik/nvm.git ~/.nvm
 
 To activate nvm, you need to source it from your bash shell
 
